@@ -19,6 +19,34 @@ function draw(ctx, location) {
   ctx.restore();
 }
 
+const StyledBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+`;
+
+const StyledBtn = styled.button`
+  background: #ff2a13;
+  color: #fff;
+  padding: 10px;
+  margin: 5px;
+  width: 150px;
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: inherit;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: white;
+    border: 1px solid #ff2a13;
+    color: black;
+  }
+`;
 function Airship() {
   //keep track of locations, initial state is an empty array
   const [locations, setLocations] = React.useState([]);
@@ -37,10 +65,8 @@ function Airship() {
   }
 
   return (
-    <>
-      <div className="btn-controls">
-        <button onClick={handleClear}>Clear</button>
-      </div>
+    <StyledBody>
+      <StyledBtn onClick={handleClear}>Clear</StyledBtn>
       <canvas
         ref={canvasRef}
         width={window.innerWidth}
@@ -53,7 +79,7 @@ function Airship() {
           }
         }}
       />
-    </>
+    </StyledBody>
   );
 }
 
