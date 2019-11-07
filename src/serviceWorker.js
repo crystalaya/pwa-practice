@@ -37,7 +37,7 @@ export function register(config) {
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
         checkValidServiceWorker(swUrl, config);
-
+          console.log("yes")
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
@@ -48,6 +48,7 @@ export function register(config) {
         });
       } else {
         // Is not localhost. Just register service worker
+        console.log("no")
         registerValidSW(swUrl, config);
       }
     });
@@ -69,6 +70,9 @@ function registerValidSW(swUrl, config) {
               // At this point, the updated precached content has been fetched,
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
+            var elem=document.getElementById('cache-msg');
+            let textNode=elem.createTextNode("Please close all tabs to refresh content");
+            document.body.append(textNode);
               console.log(
                 'New content is available and will be used when all ' +
                   'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
